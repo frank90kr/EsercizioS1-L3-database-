@@ -16,14 +16,8 @@ $options = [
 // comando che connette al database
 $pdo = new PDO($dsn, $user, $pass, $options);
 
-$stmt = $pdo->prepare("INSERT INTO utenti (nome, email, phone, title) VALUES (:nome, :email, :phone, :title)");
-$stmt->execute([
-    'nome' => 'bugo',
-    'email' => 'bugo@mail.it',
-    'phone' => '324857465',
-    'title' => 'astrofisico',
-
-]);
-
+// SELECT DI TUTTE LE RIGHE
+$stmt = $pdo->prepare('DELETE FROM utenti WHERE id = ?');
+$stmt->execute([$_GET["id"]]);
 
 header("Location: /EsercizioS1-L3(database)/");

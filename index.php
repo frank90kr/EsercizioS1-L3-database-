@@ -61,13 +61,24 @@ foreach ($stmt as $row)
    
 
         <tr>
-        <th scope="row"><?= $row["id"] ?></th>
-        <td><?= $row["nome"] ?></td>
-        <td><?= $row["email"] ?></td>
-        <td><?= $row["phone"] ?></td>
-        <td><?= $row["title"] ?></td>
+        <th scope="row"><?= $row["id"] ?>
+        <a href="/EsercizioS1-L3(database)/dettagli.php?id=
+<?= $row['id'] ?>" class="btn btn-info ms-2 mt-2">Details</a>
+
+<a href="/EsercizioS1-L3(database)/elimina.php?id=<?= $row['id'] ?>" class="btn btn-danger mt-2">elimina</a>
+</th>
+
+
+</th>
+
+               
+        <td><?= "$row[nome] "?></td>
+        <td><?= "$row[email] "?></td>
+        <td><?= "$row[phone] "?></td>
+        <td><?= "$row[title] "?></td>        
        
   </tr>
+  
 <?php  
 }
 ?>
@@ -76,9 +87,9 @@ foreach ($stmt as $row)
   </tbody>
 </table>
 
-<button type="button" class="btn btn-danger ms-2 mt-2">Delete</button>
 
-<a href="insert.php" class="btn btn-info ms-2 mt-2">Insert</a>
+<a href="/EsercizioS1-L3(database)/insert.php?id=<?= $row['id'] ?>" class="btn btn-success mt-2">aggiungi</a>
+
 
 </div>
 
