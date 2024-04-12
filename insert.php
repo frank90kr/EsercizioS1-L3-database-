@@ -26,4 +26,4 @@ $stmt->execute([
 ]);
 
 
-header("Location: /EsercizioS1-L3(database)/");
+header("Location: /EsercizioS1-L3-database-/");

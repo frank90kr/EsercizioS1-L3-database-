@@ -20,4 +20,4 @@ $pdo = new PDO($dsn, $user, $pass, $options);
 $stmt = $pdo->prepare('DELETE FROM utenti WHERE id = ?');
 $stmt->execute([$_GET["id"]]);
 
-header("Location: /EsercizioS1-L3(database)/");
+header("Location:/EsercizioS1-L3-database-/");

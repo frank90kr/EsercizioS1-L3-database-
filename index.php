@@ -22,6 +22,13 @@ $pdo = new PDO($dsn, $user, $pass, $options);
 
 $stmt = $pdo->query('SELECT * FROM utenti');
 
+$search = $_GET['search'] ?? '';
+
+$stmt = $pdo->prepare("SELECT * FROM utenti WHERE nome LIKE ?");
+$stmt->execute([
+    "%$search%"
+]);
+
 
 
 
@@ -41,7 +48,15 @@ $stmt = $pdo->query('SELECT * FROM utenti');
       <!-- Tabella -->
       
       <div class="container">
+
+      
+  <div class="d-flex mt-2">
     <h1>Lista utenti</h1>
+    <form class="d-flex mt-2 w-25 ms-4 h-75" role="search">
+        <input class="form-control me-2" type="text" name="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+      </div>
 
 <table class="table">
   <thead>
@@ -62,10 +77,10 @@ foreach ($stmt as $row)
 
         <tr>
         <th scope="row"><?= $row["id"] ?>
-        <a href="/EsercizioS1-L3(database)/dettagli.php?id=
+        <a href=" /EsercizioS1-L3-database-/dettagli.php?id=
 <?= $row['id'] ?>" class="btn btn-info ms-2 mt-2">Details</a>
 
-<a href="/EsercizioS1-L3(database)/elimina.php?id=<?= $row['id'] ?>" class="btn btn-danger mt-2">elimina</a>
+<a href=" /EsercizioS1-L3-database-/elimina.php?id=<?= $row['id'] ?>" class="btn btn-danger mt-2">elimina</a>
 </th>
 
 
@@ -88,7 +103,9 @@ foreach ($stmt as $row)
 </table>
 
 
-<a href="/EsercizioS1-L3(database)/insert.php?id=<?= $row['id'] ?>" class="btn btn-success mt-2">aggiungi</a>
+<a href="/EsercizioS1-L3-database-/insert.php?id=<?= $row['id'] ?>" class="btn btn-success mt-2">aggiungi</a>
+
+<a href="/EsercizioS1-L3-database-/form.php?id=<?= $row['id'] ?>" class="btn btn-success mt-2">+ nuova riga</a>
 
 
 </div>
